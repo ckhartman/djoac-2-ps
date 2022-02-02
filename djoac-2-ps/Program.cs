@@ -53,7 +53,20 @@ namespace djoac_2_ps
             var listDjoacModel = djoacDAL.GetList();
             listDjoacModel.ForEach(item =>
             {
-                var oItem = item.DtAgreed + item.EmpId + "\t" + item.PsCode + item.IdJid;
+                var o1 = item.DtAgreed + item.EmpId;
+                var o2 = item.PsCode + item.IdJid;                
+                string sSpc1 = "";
+                string sSpc2 = "";
+                for (int i1 = o1.Length - 1; i1 < 21; i1++) 
+                    {
+                    sSpc1 += "\u0020";
+                    }; ;
+                for (int i2 = 0; i2 < 15; i2++)
+                {
+                    sSpc2 += "\u0020";
+                }; ;
+                string s = o1 + sSpc1 + o2 + sSpc2;
+                 var oItem = s;
                 Console.WriteLine(oItem);
             });
             Console.SetOut(oldOut);
